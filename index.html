@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Suppress spurious unhandled rejections/errors caused by browser extensions (e.g. MetaMask, Web3 wallets)
+      (function() {
+        function isExtensionError(msg, src) {
+          var str = ((msg || '') + ' ' + (src || '')).toLowerCase();
+          return (
+            str.indexOf('metamask') !== -1 ||
+            str.indexOf('ethereum') !== -1 ||
+            str.indexOf('web3') !== -1 ||
+            str.indexOf('chrome-extension://') !== -1 ||
+            str.indexOf('moz-extension://') !== -1 ||
+            str.indexOf('evm') !== -1
+          );
+        }
+
+        window.addEventListener('unhandledrejection', function(event) {
+          if (!event) return;
+          var reason = event.reason;
+          var reasonMsg = (reason && (reason.message || reason.toString())) || '';
+          var reasonStack = (reason && reason.stack) || '';
+          if (isExtensionError(reasonMsg, reasonStack)) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+
+        window.addEventListener('error', function(event) {
+          if (!event) return;
+          var msg = event.message || '';
+          var src = event.filename || '';
+          if (isExtensionError(msg, src)) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+      })();
+    </script>
+    <title>RailCast AI — Dynamic & Explainable ETA Intelligence | Indian Railways</title>
+    <meta name="description" content="Smart India Hackathon 2026 (PS 26028) dynamic forecast and explainable ETA intelligence operations platform for Indian Railways coaching trains." />
+    <meta property="og:title" content="RailCast AI — Dynamic & Explainable ETA Intelligence" />
+    <meta property="og:description" content="Dynamic forecast of Expected Time of Arrival (ETA) for coaching trains with explainable causality, block-section speed profiles, and delay recovery predictions." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased font-sans selection:bg-blue-500/20 selection:text-blue-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

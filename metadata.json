@@ -1,0 +1,6 @@
+{
+  "name": "RailCast AI — Dynamic & Explainable ETA Intelligence",
+  "description": "Smart India Hackathon 2026 (PS 26028) dynamic forecast and explainable ETA intelligence operations platform for Indian Railways coaching trains.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
